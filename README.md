@@ -18,21 +18,22 @@ To run this script, you need to have Python installed on your system. The code i
 Copy code  
 pip install requests mysql-connector-python   
 3.	Make sure you have a MySQL database set up and running.  
-4.	Update the script with your own database connection details. Modify the following lines:  
-
-
-
-
-
-
-
-pythonCopy code  
-db_connection = mysql.connector.connect( host="localhost", user="claudio_git", password="public4At&H4r7pass", database="h2_testdb" ) 
-Replace the values in the host, user, password, and database parameters with your own MySQL database credentials.
-5.	Obtain an API key by signing up at RapidAPI. Once you have the API key, replace the value of the X-RapidAPI-Key header in the following line:
-pythonCopy code
-headers = { "X-RapidAPI-Key": "d20f30e63dmsh95f7a23c5519e24p15eca4jsn4573a4bff139" } 
-Replace "d20f30e63dmsh95f7a23c5519e24p15eca4jsn4573a4bff139" with your own API key.  
+4.  Obtain an API key by signing up at RapidAPI. Once you have the API key, replace the value of the X-RapidAPI-Key header in the following line:
+  
+headers = { "X-RapidAPI-Key": "YOUR_API_KEY" }  
+Replace "YOUR_API_KEY" with your own API key.  
+5.	Update the script with your own database connection details. On the "config.json" file, located on .gitignore, I wrote this structure (in a .json):  
+  
+{  
+  "api_key": "YOUR_API_KEY",  
+  "db_host": "YOUR_DB_HOST",  
+  "db_user": "YOUR_DB_USER",  
+  "db_password": "YOUR_DB_PASSWORD",  
+  "db_name": "YOUR_DB_NAME",  
+  "db_auth_plugin": "YOUR_AUTH_PLUGIN"  
+}  
+  
+Replace the values in the host, user, password, database name and authentication plugin parameters with your own MySQL database credentials.  
 6.	Run the Python script using your preferred method (e.g., command line, IDE, etc.).  
 
 <b>Usage:  </b>  
