@@ -9,6 +9,7 @@ API URL: https://rapidapi.com/theoddsapi/api/live-sports-odds/
 <b>Prerequisites:  </b>  
   
 To run this script, you need to have Python installed on your system. The code is compatible with Python 3. Additionally, ensure that you have the following dependencies installed:  
+  
 &emsp;•	requests  
 &emsp;•	mysql-connector-python  
 
@@ -20,9 +21,9 @@ pip install requests mysql-connector-python
 3.	Make sure you have a MySQL database set up and running.  
 4.  Obtain an API key by signing up at RapidAPI. Once you have the API key, replace the value of the X-RapidAPI-Key header in the following line:
   
-headers = { "X-RapidAPI-Key": "YOUR_API_KEY" }  
-Replace "YOUR_API_KEY" with your own API key.  
-5.	Update the script with your own database connection details. On the "config.json" file, located on .gitignore, I wrote this structure (in a .json):  
+&emsp;headers = { "X-RapidAPI-Key": "YOUR_API_KEY" }  
+&emsp;Replace "YOUR_API_KEY" with your own API key.  
+&ensp;5.	Update the script with your own database connection details. On the "config.json" file, located on .gitignore, I wrote this structure (in a .json):  
   
 {  
   "api_key": "YOUR_API_KEY",  
