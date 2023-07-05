@@ -1,12 +1,25 @@
 import requests
 import mysql.connector
+import json
 from datetime import datetime
 
 # Describing a request do receive, using the API, the games results:
 url_odds = "https://odds.p.rapidapi.com/v4/sports/soccer_brazil_campeonato/scores"
 
+# Reading the configuration file (which is located on .gitignore):
+with open("config.json") as c:
+    config = json.load(c)
+
+# Retrieve the values:
+api_key = config["api_key"]
+db_host = config["db_host"]
+db_user = config["db_user"]
+db_password = config["db_password"]
+db_name = config["db_name"]
+db_auth_plugin = config["auth_plugin"]
+
 headers = {
-    "X-RapidAPI-Key": "d20f30e63dmsh95f7a23c5519e24p15eca4jsn4573a4bff139"
+    "X-RapidAPI-Key": api_key
 }
 params = {
     "region": "br",
@@ -23,11 +36,11 @@ print(response.content)
 
 # Connection with MySQL database:
 db_connection = mysql.connector.connect(
-    host="localhost",
-    user="git_public_generic",
-    password="public4At&H4r7pass",
-    database="sqlgithub2[api]",
-    auth_plugin='mysql_native_password'
+    host= db_host,
+    user= db_user,
+    password= db_password,
+    database= db_name,
+    auth_plugin= db_auth_plugin
 )
 
 db_cursor = db_connection.cursor(buffered=True)
@@ -70,8 +83,8 @@ for match in requested_data:
 
 db_cursor.execute("SELECT * FROM matches_brasileirao_serie_a_2023")
 column_names = [column[0] for column in db_cursor.description]
-print(column_names)
 
+print(column_names)
 print(requested_data)
 print(datahora_partida) #match_datetime
 print(data_partida) #match_date
@@ -79,7 +92,6 @@ print(time_casa) #home_team
 print(time_fora) #away_team
 print(gols_time_casa) #home_team_goals
 print(gols_time_fora) #away_team_goals
-
 print(event)
 print(matches)
 
